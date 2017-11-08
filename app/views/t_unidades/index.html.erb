@@ -1,0 +1,34 @@
+<h1>Organigrama Municipal</h1>
+
+<div class="tree">
+    
+    <% i=-1 %> 
+
+    <% @organigrama.each do |t| %>
+
+      <% while i>t.depth %>
+        
+        <% i=i-1 %>
+        </ul>
+
+      <% end %>
+
+      <% if i<t.depth %>
+        <% if i == -1 %>
+          <ul class="vertical menu" data-accordion-menu="ay1o6b-accordion-menu" role="menu" aria-multiselectable="true">
+        <% else %>
+          <ul class="menu vertical nested submenu is-accordion-submenu" aria-hidden="true">
+        <% end %>
+              
+        <% i=i+1 %>
+      <% end %>
+
+        <li role="menuitem" class="is-accordion-submenu-parent" aria-haspopup="true" aria-expanded="false"                          aria-label="Item 1" aria-controls="98lf08-acc-menu" id="z9o41u-acc-menu-link">
+
+        <%= link_to t.cDenominacion, t_unidad_path(t)  %>
+        
+      </li>
+
+    <% end %>
+
+</div>
