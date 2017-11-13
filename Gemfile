@@ -17,6 +17,7 @@ gem 'activerecord-sqlserver-adapter', '~> 5.1', '>= 5.1.2'
 # Geslico gems
 gem 'ancestry'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'foundation-rails', '~> 6.2', '>= 6.2.3.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'

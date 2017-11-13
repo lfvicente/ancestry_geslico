@@ -5,18 +5,12 @@ class TUnidadesController < ApplicationController
     # GET /organigrama
       def organigrama
           params[:id]=10000000 if !params[:id]  
-                
-          # if params[:id]=10000000
-          #   @organigrama = TUnidad.where("nCodUni=10000000 or nCodUniPadre=10000000 or nCodUniPadre=10000001 or nCodUni=nIdArea").arrange_as_array({:order => 'norder'})
-          # else
-            @organigrama = TUnidad.find(params[:id])            
-          # end
-        
+          @organigrama = TUnidad.find(params[:id])            
       end
 
       # GET /t_unidades
-      def index        
-        @t_unidades = TUnidad.all    
+      def index                
+        @t_unidad = TUnidad.all
       end
 
       def show

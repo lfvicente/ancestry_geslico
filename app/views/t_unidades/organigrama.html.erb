@@ -2,31 +2,11 @@
 <h2>organigrama.html.erb</h2>
 
 <div class="tree">
-
-    <ul class="vertical menu" data-accordion-menu="ay1o6b-accordion-menu" role="menu" aria-multiselectable="true">    
+    
+    <ul class="vertical menu" data-accordion-menu="ay1o6b-accordion-menu" role="menu" aria-multiselectable="true">                            
         <li role="menuitem" class="is-accordion-submenu-parent" aria-haspopup="true" aria-expanded="false" aria-label="Item 1" aria-controls="98lf08-acc-menu" id="z9o41u-acc-menu-link">                
-            <%= link_to "#{@organigrama.nCodUni.to_s} - #{@organigrama.cDenominacion}", (organigrama_url(@organigrama.parent) if @organigrama.parent) %>  
-            <% i=0 %> 
-        </li>
-        
-        <% @organigrama.children.each do |a| %>
-            <% while i>a.depth %>
-                <% i=i-1 %>
-                </ul>
-            <% end %>
-
-            <% if i<a.depth %>
-                <% if i == -1 %>
-                    <ul class="vertical menu" data-accordion-menu="ay1o6b-accordion-menu" role="menu" aria-multiselectable="true">                 
-                <% else %>
-                    <ul class="menu vertical nested submenu is-accordion-submenu" aria-hidden="true">                
-                <% end %>
-                <% i=i+1 %>
-            <% end %>
-
-            <li role="menuitem" class="is-accordion-submenu-parent" aria-haspopup="true" aria-expanded="false" aria-label="Item 1" aria-controls="98lf08-acc-menu" id="z9o41u-acc-menu-link">            
-                <%= link_to "#{a.nCodUni.to_s} - #{a.cDenominacion}" , organigrama_url(a)  %> 
-            </li>
-        <% end %>        
+            <%= link_to "#{@organigrama.nCodUni} - #{@organigrama.cDenominacion}", (organigrama_url(@organigrama.parent) if @organigrama.parent) %>              
+        </li>    
+        <%= render partial: "children", object: @organigrama, as: :item %>
     </ul>
 </div>

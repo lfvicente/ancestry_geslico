@@ -1,37 +1,7 @@
-  
-<h1>Organigrama Municipal</h1>
 
-<div class="tree">
-    
-    <% i=-1 %> 
+<% @t_unidades = TUnidad.all.arrange %>
 
-    <% @organigrama.each do |t| %>
-
-      <% while i>t.depth %>
-        
-        <% i=i-1 %>
-        </ul>
-
-      <% end %>
-
-      <% if i<t.depth %>
-        <% if i == -1 %>
-          <ul class="vertical menu" data-accordion-menu="ay1o6b-accordion-menu" role="menu" aria-multiselectable="true">
-          ul1
-        <% else %>
-          <ul class="menu vertical nested submenu is-accordion-submenu" aria-hidden="true">
-          ul2
-        <% end %>
-              
-        <% i=i+1 %>
-      <% end %>
-
-        <li role="menuitem" class="is-accordion-submenu-parent" aria-haspopup="true" aria-expanded="false" aria-label="Item 1" aria-controls="98lf08-acc-menu" id="z9o41u-acc-menu-link">
-
-        <%= link_to "#{t.nCodUni} - #{t.cDenominacion}" , t_unidad_path(t)  %>
-        
-      </li>
-
-    <% end %>
-
-</div>
+<%= arranged_tree_as_list(@t_unidades) do |category| %>    
+    <%= link_to "#{category.nCodUni} - #{category.cDenominacion}" %>
+<% end %>
+     
