@@ -16,13 +16,15 @@ gem 'activerecord-sqlserver-adapter', '~> 5.1', '>= 5.1.2'
 
 # Geslico gems
 gem 'ancestry'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'foundation-rails', '~> 6.2', '>= 6.2.3.0'
 
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

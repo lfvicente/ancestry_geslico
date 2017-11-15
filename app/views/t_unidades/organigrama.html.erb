@@ -2,9 +2,9 @@
 <h2>organigrama.html.erb</h2>
 
 <div class="tree">
-    
-    <ul class="vertical menu" data-accordion-menu="ay1o6b-accordion-menu" role="menu" aria-multiselectable="true">                            
-        <li role="menuitem" class="is-accordion-submenu-parent" aria-haspopup="true" aria-expanded="false" aria-label="Item 1" aria-controls="98lf08-acc-menu" id="z9o41u-acc-menu-link">                
+
+    <ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true" role="tree" aria-multiselectable="true">                            
+        <li role="treeitem" class="is-accordion-submenu-parent has-submenu-toggle">                
             <%= link_to "#{@organigrama.nCodUni} - #{@organigrama.cDenominacion}", (organigrama_url(@organigrama.parent) if @organigrama.parent) %>              
         </li>    
         <%= render partial: "children", object: @organigrama, as: :item %>

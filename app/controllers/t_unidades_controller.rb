@@ -3,14 +3,16 @@ class TUnidadesController < ApplicationController
     before_action :set_t_unidad, only: [:show, :edit, :update, :destroy]
     
     # GET /organigrama
-      def organigrama
-          params[:id]=10000000 if !params[:id]  
-          @organigrama = TUnidad.find(params[:id])            
-      end
+    
+      # def organigrama
+          # params[:id]=10000000 if !params[:id]  
+          # @organigrama = TUnidad.find(params[:id])            
+      # end
 
       # GET /t_unidades
       def index                
         @t_unidad = TUnidad.all
+        @organigrama = TUnidad.select(:nCodUni, :nCodUniPadre, :cDenominacion, :nIdArea, :ancestry, :norder).all.arrange({:order => 'norder'}) 
       end
 
       def show

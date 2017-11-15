@@ -9,5 +9,5 @@ class TUnidad < ApplicationRecord
     belongs_to :t_unidad, :foreign_key => "nCodUniPadre", :primary_key => "nCodUni"
     
     has_ancestry
-
+    
 end

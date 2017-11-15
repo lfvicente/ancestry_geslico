@@ -1,7 +1,8 @@
+<div class="row">
+  
+    <%= arranged_tree_as_list(@organigrama, {:list_style => :accordion_list_group}) do |nodo| %>    
+      <%= link_to "#{nodo.nCodUni} - #{nodo.cDenominacion}" %>
+    <% end %>
+  
+</div> 
 
-<% @t_unidades = TUnidad.all.arrange %>
-
-<%= arranged_tree_as_list(@t_unidades) do |category| %>    
-    <%= link_to "#{category.nCodUni} - #{category.cDenominacion}" %>
-<% end %>
-     

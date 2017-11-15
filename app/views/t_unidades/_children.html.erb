@@ -6,11 +6,11 @@
         </ul>
     <% end %>
     <% if i<a.depth %>
-        <ul class="menu vertical nested submenu is-accordion-submenu" aria-hidden="true">                
+        <ul class="menu vertical nested submenu is-accordion-submenu" data-submenu >                
         <% i=i+1 %>
     <% end %>
 
-    <li role="menuitem" class="is-accordion-submenu-parent" aria-haspopup="true" aria-expanded="false" aria-label="Item 1" aria-controls="98lf08-acc-menu" id="z9o41u-acc-menu-link">            
+    <li role="treeitem" class="is-accordion-submenu-parent has-submenu-toggle">            
         <%= link_to "#{a.nCodUni} - #{a.cDenominacion}" , organigrama_url(a)  %>         
         
     </li>

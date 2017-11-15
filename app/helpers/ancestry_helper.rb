@@ -7,10 +7,10 @@ module AncestryHelper
       options = {
         :list_type            => :ul,
         :list_style           => '', 
-        :ul_class             => ['menu vertical nested submenu is-accordion-submenu'],
+        :ul_class             => [],
         :ul_class_top         => [],
         :ul_class_children    => [],
-        :li_class             => ['is-accordion-submenu-parent'],
+        :li_class             => [],
         :li_class_top         => [],
         :li_class_children    => [],
         :sort_by              => []
@@ -20,9 +20,10 @@ module AncestryHelper
       # to render bootstrap style list groups. This is used to keep from recoding the same
       # options on different lists      
       case options[:list_style]
-        when :bootstrap_list_group
-          options[:ul_class] << ['list-group']
-          options[:li_class] << ['list-group-item']
+        #Creo nuestros propios class para foundation
+        when :accordion_list_group           
+          options[:ul_class_top] << ['vertical menu accordion-menu is-active']
+          options[:ul_class_children] << ['menu vertical nested']          
       end
       options[:list_style] = ''
   
@@ -36,7 +37,7 @@ module AncestryHelper
       current_depth = 0
       # and here... we... go...
       hash.each do |object, children|
-  
+          
           li_classes = options[:li_class]  
                 
           if object.depth == 0
@@ -46,9 +47,9 @@ module AncestryHelper
           end 
                  
           if children.size > 0
-            output << content_tag(:li, capture(object, &block) + arranged_tree_as_list(children, options, &block).html_safe,  :class => li_classes)
+            output << content_tag(:li, capture(object, &block) + arranged_tree_as_list(children, options, &block).html_safe)
           else
-            output << content_tag(:li, capture(object, &block), :class => li_classes).html_safe
+            output << content_tag(:li, capture(object, &block)).html_safe
             current_depth = object.depth
           end
   
@@ -60,11 +61,12 @@ module AncestryHelper
         
         if current_depth == 0
           ul_classes += options[:ul_class_top]
+          output = content_tag(options[:list_type], output.html_safe,  'data-submenu-toggle' => true, 'data-accordion-menu' => '')
         else
-          ul_classes += options[:ul_class_children]
+          ul_classes += options[:ul_class_children] 
+          output = content_tag(options[:list_type], output.html_safe)
         end      
-        
-        output = content_tag(options[:list_type], output.html_safe, :class => ul_classes)
+ 
       end
       
       return output.html_safe
